@@ -34,7 +34,7 @@ describe("Blog Posts", function() {
     });
 
     it("should add an item on POST", function() {
-        const newItem = {title: "Is this a test?", content: "I guess so.", author: "testman123", publishDate: "today"};
+        const newItem = {title: "Is this a test?", content: "I guess so.", author: "testman123"};
         return chai.request(app)
             .post("/blog-posts")
             .send(newItem)
@@ -42,7 +42,7 @@ describe("Blog Posts", function() {
                 res.should.have.status(201);
                 res.should.be.json;
                 res.body.should.be.a("object");
-                res.body.should.include.keys("id", "title", "content", "author", "publishDate");
+                res.body.should.include.keys("id", "title", "content", "author", "date");
                 res.body.id.should.not.be.null;
                 res.body.should.deep.equal(Object.assign(newItem, {id: res.body.id}));
             });
