@@ -51,7 +51,8 @@ describe("Blog Posts", function() {
     it("should update items on PUT", function() {
         const updatedData = {
             title: "foo",
-            content: "bar"
+            content: "bar",
+            author: "testman123"
         };
 
         return chai.request(app)
