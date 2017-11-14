@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
+// parses the body of the request
 const bodyParser = require("body-parser");
 const jsonParser = bodyParser.json();
 
 const {BlogPosts} = require("./models");
 
 // adding some blog posts
-BlogPosts.create( 
+BlogPosts.create(
     "Are cats actually aliens?", // title
     "Yes.", // content
     "catmaster123", // author
@@ -40,6 +41,7 @@ router.post("/", jsonParser, (req, res) => {
 // READ
 router.get("/", (req, res) => {
     res.json(BlogPosts.get());
+    // res.status(201).json(BlogPosts.get());
 });
 
 // UPDATE
